@@ -17,38 +17,74 @@ const viewer = new Cesium.Viewer('cesiumContainer', {
 
 // const buildingsTileset = viewer.scene.primitives.add(Cesium.createOsmBuildings());
 
-// const circle = 
+// // const circle = 
+// viewer.entities.add({
+//   position: Cesium.Cartesian3.fromDegrees(-111.0, 40.0, 150000.0),
+//   ellipse: {
+//     semiMajorAxis: 300000,
+//     semiMinorAxis: 300000,
+//     height: 200000,
+//     material: Cesium.Color.GREEN,
+//   }
+// });
+
+// // const redEllipse = 
+// viewer.entities.add({
+//   position: Cesium.Cartesian3.fromDegrees(-103, 40),
+//   ellipse: {
+//     semiMajorAxis: 400000,
+//     semiMinorAxis: 250000,
+//     material: Cesium.Color.RED.withAlpha(0.6),
+//   }
+// });
+
+// const blueEllipse = viewer.entities.add({
+//   position: Cesium.Cartesian3.fromDegrees(-95.0, 40.0, 100000.0),
+//   name: "Blue translucent, rotated, and extruded ellipse with outline",
+//   ellipse: {
+//     semiMinorAxis: 150000.0,
+//     semiMajorAxis: 300000.0,
+//     extrudedHeight: 200000.0,
+//     rotation: Cesium.Math.toRadians(45),
+//     material: Cesium.Color.BLUE.withAlpha(0.5),
+//     outline: true,
+//   },
+// });
+
+// const blueEllipsoid = 
 viewer.entities.add({
-  position: Cesium.Cartesian3.fromDegrees(-111.0, 40.0, 150000.0),
-  ellipse: {
-    semiMajorAxis: 300000,
-    semiMinorAxis: 300000,
-    height: 200000,
-    material: Cesium.Color.GREEN,
+  name: 'Blue ellipsoid',
+  position: Cesium.Cartesian3.fromDegrees(-114.0, 40.0, 300000.0),
+  ellipsoid: {
+    radii: new Cesium.Cartesian3(200000.0, 200000.0, 300000.0),
+    material: Cesium.Color.BLUE,
   }
 });
 
-// const redEllipse = 
+// const redSphere = 
 viewer.entities.add({
-  position: Cesium.Cartesian3.fromDegrees(-103, 40),
-  ellipse: {
-    semiMajorAxis: 400000,
-    semiMinorAxis: 250000,
-    material: Cesium.Color.RED.withAlpha(0.6),
-  }
-});
-
-const blueEllipse = viewer.entities.add({
-  position: Cesium.Cartesian3.fromDegrees(-95.0, 40.0, 100000.0),
-  name: "Blue translucent, rotated, and extruded ellipse with outline",
-  ellipse: {
-    semiMinorAxis: 150000.0,
-    semiMajorAxis: 300000.0,
-    extrudedHeight: 200000.0,
-    rotation: Cesium.Math.toRadians(45),
-    material: Cesium.Color.BLUE.withAlpha(0.5),
+  name: 'Red sphere',
+  position: Cesium.Cartesian3.fromDegrees(-107.0, 40.0, 300000.0),
+  ellipsoid: {
+    radii: new Cesium.Cartesian3(300000, 300000, 300000),
+    material: Cesium.Color.RED.withAlpha(0.5),
     outline: true,
+    outlineColor: Cesium.Color.BLACK
+  }
+});
+
+// const outlineOnly = 
+viewer.entities.add({
+  name: "Yellow ellipsoid outline",
+  position: Cesium.Cartesian3.fromDegrees(-100.0, 40.0, 300000.0),
+  ellipsoid: {
+    radii: new Cesium.Cartesian3(200000.0, 200000.0, 300000.0),
+    fill: false,
+    outline: true,
+    outlineColor: Cesium.Color.YELLOW,
+    slicePartitions: 24,
+    stackPartitions: 36,
   },
 });
 
-viewer.flyTo(blueEllipse);
+viewer.flyTo(viewer.entities);
